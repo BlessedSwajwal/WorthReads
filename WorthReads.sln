@@ -3,20 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorthReads.API", "WorthReads\WorthReads.API.csproj", "{39CA09A5-B672-4F07-8B12-31ACB1D48DC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "WorthReads\API.csproj", "{39CA09A5-B672-4F07-8B12-31ACB1D48DC0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorthReads.Domain", "WorthReads.API\WorthReads.Domain.csproj", "{4A5AB8FC-D9E2-4AC5-B929-579B0403E818}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "WorthReads.API\Domain.csproj", "{4A5AB8FC-D9E2-4AC5-B929-579B0403E818}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorthReads.Application", "WorthReads.Application\WorthReads.Application.csproj", "{B100C77D-6C8B-4BF3-9260-BD4CDA2975A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "WorthReads.Application\Application.csproj", "{B100C77D-6C8B-4BF3-9260-BD4CDA2975A4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorthReads.Contracts", "WorthReads.Contracts\WorthReads.Contracts.csproj", "{1B816C73-0BB3-43B6-B502-F43133BDB1DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "WorthReads.Contracts\Contracts.csproj", "{1B816C73-0BB3-43B6-B502-F43133BDB1DB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{CAEF34B1-78BC-4278-9228-4096B4A45E4E}"
 	ProjectSection(SolutionItems) = preProject
 		Users.http = Users.http
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorthReads.Infrastructure", "WorthReads.Infrastructure\WorthReads.Infrastructure.csproj", "{F24E4E0A-1C5A-42B2-9055-B00AF1334998}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "WorthReads.Infrastructure\Infrastructure.csproj", "{F24E4E0A-1C5A-42B2-9055-B00AF1334998}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

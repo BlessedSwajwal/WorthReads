@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WorthReads.API\WorthReads.Domain.csproj" />
+    <ProjectReference Include="..\WorthReads.API\Domain.csproj" />
   </ItemGroup>
 
 </Project>
