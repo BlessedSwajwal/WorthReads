@@ -13,10 +13,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "WorthReads.Con
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{CAEF34B1-78BC-4278-9228-4096B4A45E4E}"
 	ProjectSection(SolutionItems) = preProject
+		Reads.http = Reads.http
 		Users.http = Users.http
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "WorthReads.Infrastructure\Infrastructure.csproj", "{F24E4E0A-1C5A-42B2-9055-B00AF1334998}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C37B3180-EB18-4D93-94A5-A45CE7C414DE}"
+	ProjectSection(SolutionItems) = preProject
+		ToDoText.txt = ToDoText.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
