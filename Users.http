@@ -1,0 +1,22 @@
+@base=https://localhost:7294/Users
+
+POST {{base}}/Register
+Content-Type: application/json
+
+{
+    "FirstName": "Sajal",
+    "LastName": "Ghimire",
+    "Email": "sajal@example.com",
+    "Password": "Abc123!@#"
+}
+
+############
+
+POST {{base}}/Login
+Content-Type: application/json
+
+{
+    "Email": "sajal@example.com",
+    "Password": "Abc123!@#"
+}
+
