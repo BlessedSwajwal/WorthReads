@@ -8,9 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-
 builder.Services.AddApplication()
-    .AddInfrastructure();
+    .AddInfrastructure(builder.Configuration);
 
 //Mapster
 {
@@ -21,12 +20,13 @@ builder.Services.AddApplication()
     builder.Services.AddSingleton(config);
 }
 
+
 var app = builder.Build();
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers().RequireAuthorization();
 
 app.Run();

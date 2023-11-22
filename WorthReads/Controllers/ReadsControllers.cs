@@ -1,6 +1,7 @@
 ﻿using Application.Reads.Query;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
@@ -19,6 +20,7 @@ public class ReadsControllers : Controller
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> GetReads([FromQuery] string status)
     {
         if (status == null) status = "popular";

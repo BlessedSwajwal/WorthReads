@@ -1,4 +1,5 @@
-﻿using MapsterMapper;
+﻿using Application.Common.Services;
+using MapsterMapper;
 using MediatR;
 using OneOf;
 using WorthReads.Application.Common.Exceptions;
@@ -13,11 +14,13 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, OneOf<UserResponse,
 {
     private readonly IMapper _mapper;
     private readonly IUserRepository _userRepository;
+    private readonly IJwtGenerator _jwtGenerator;
 
-    public LoginQueryHandler(IMapper mapper, IUserRepository userRepository)
+    public LoginQueryHandler(IMapper mapper, IUserRepository userRepository, IJwtGenerator jwtGenerator)
     {
         _mapper = mapper;
         _userRepository = userRepository;
+        _jwtGenerator = jwtGenerator;
     }
 
     public async Task<OneOf<UserResponse, IServiceError, ValidationErrors>> Handle(LoginQuery request, CancellationToken cancellationToken)
@@ -26,7 +29,11 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, OneOf<UserResponse,
         User? user = _userRepository.GetUserByEmail(request.Email);
         if (user is null || user.Password != request.Password) return new InvalidCredentialsError();
 
+        //Generate token
+        var token = _jwtGenerator.GenerateJwt(user);
+
         UserResponse userResponse = _mapper.Map<UserResponse>(user);
+        userResponse.Token = token;
         return userResponse;
     }
 }
