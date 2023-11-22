@@ -12,6 +12,7 @@ public class UserResponseMapping : IRegister
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.Email, src => src.Email)
             .Map(dest => dest.FirstName, src => src.FirstName)
-            .Map(dest => dest.LastName, src => src.LastName);
+            .Map(dest => dest.LastName, src => src.LastName)
+            .Map(dest => dest.Token, src => MapContext.Current!.Parameters["Token"]);
     }
 }

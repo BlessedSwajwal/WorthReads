@@ -26,14 +26,14 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, OneOf<UserResponse,
     public async Task<OneOf<UserResponse, IServiceError, ValidationErrors>> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
-        User? user = _userRepository.GetUserByEmail(request.Email);
-        if (user is null || user.Password != request.Password) return new InvalidCredentialsError();
+        User user = _userRepository.GetUserByEmail(request.Email)!;
+        if (user.Equals(User.UserEmpty) || user.Password != request.Password) return new InvalidCredentialsError();
 
         //Generate token
         var token = _jwtGenerator.GenerateJwt(user);
 
-        UserResponse userResponse = _mapper.Map<UserResponse>(user);
-        userResponse.Token = token;
+
+        UserResponse userResponse = _mapper.From(user).AddParameters("Token", token).AdaptToType<UserResponse>();
         return userResponse;
     }
 }

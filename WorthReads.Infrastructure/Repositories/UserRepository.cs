@@ -12,8 +12,10 @@ public class UserRepository : IUserRepository
         return user;
     }
 
-    public User? GetUserByEmail(string email)
+    public User GetUserByEmail(string email)
     {
-        return _users.FirstOrDefault(x => x.Email == email);
+        User? user = _users.FirstOrDefault(x => x.Email == email);
+        if (user is null) return User.UserEmpty;
+        return user;
     }
 }

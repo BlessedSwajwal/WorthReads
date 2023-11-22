@@ -1,4 +1,5 @@
-﻿using Application.Common.Services;
+﻿using Application.Common.Exceptions;
+using Application.Common.Services;
 using MapsterMapper;
 using MediatR;
 using OneOf;
@@ -27,13 +28,19 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, OneOf
     {
         await Task.CompletedTask;
 
+        User existingUser = _userRepository.GetUserByEmail(request.Email)!;
+
+        if (!existingUser.Equals(User.UserEmpty))
+        {
+            return new UserAlreadyExistsError();
+        }
+
         var user = User.Create(request.FirstName, request.LastName, request.Email, request.Password);
         var savedUser = _userRepository.AddUser(user);
         //Generate Token
         var token = _jwtGenerator.GenerateJwt(savedUser);
 
-        var userResponse = _mapper.Map<UserResponse>(savedUser);
-        userResponse.Token = token;
+        var userResponse = _mapper.From(savedUser).AddParameters("Token", token).AdaptToType<UserResponse>();
         return userResponse;
     }
 }

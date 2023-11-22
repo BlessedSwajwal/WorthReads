@@ -5,6 +5,7 @@ namespace WorthReads.Domain.Users;
 
 public class User : Entity<UserId>
 {
+    public static readonly User UserEmpty = new() { Id = UserId.Create(Guid.Empty) };
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
     public string Email { get; private set; }
