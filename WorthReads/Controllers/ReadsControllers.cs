@@ -1,5 +1,4 @@
 ﻿using Application.Reads.Query;
-using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,12 +9,10 @@ namespace API.Controllers;
 [Route("Reads")]
 public class ReadsControllers : Controller
 {
-    private readonly IMapper _mapper;
     private readonly IMediator _mediator;
 
-    public ReadsControllers(IMapper mapper, IMediator mediator)
+    public ReadsControllers(IMediator mediator)
     {
-        _mapper = mapper;
         _mediator = mediator;
     }
 

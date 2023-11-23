@@ -53,6 +53,7 @@ public class UsersController : Controller
     }
 
     [HttpGet("article")]
+    [AllowAnonymous]
     public async Task<IActionResult> Article()
     {
         var res = await _readsService.GetReads("technology", "popularity");
