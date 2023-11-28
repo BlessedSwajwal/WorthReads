@@ -15,9 +15,9 @@ public class UsersController : Controller
 {
     private readonly ISender _mediator;
     private readonly IMapper _mapper;
-    private readonly PocketAPIService _pocketAPIService;
+    private readonly IPocketAPIService _pocketAPIService;
 
-    public UsersController(ISender mediator, IMapper mapper, PocketAPIService pocketAPIService)
+    public UsersController(ISender mediator, IMapper mapper, IPocketAPIService pocketAPIService)
     {
         _mediator = mediator;
         _mapper = mapper;

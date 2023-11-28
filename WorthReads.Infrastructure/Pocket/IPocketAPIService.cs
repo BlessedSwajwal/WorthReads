@@ -1,9 +1,8 @@
 ﻿using Domain.Reads;
 
-namespace Infrastructure.Services
+namespace Infrastructure.Services;
+
+public interface IPocketAPIService
 {
-    public interface IPocketAPIService
-    {
-        Task<List<Reads>> GetPocketList();
-    }
+    Task<List<Reads>> GetPocketList();
 }

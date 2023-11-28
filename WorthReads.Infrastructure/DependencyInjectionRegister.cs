@@ -27,7 +27,7 @@ public static class DependencyInjectionRegister
 
         //Pocket API Stuffs
         //TODO - Properly separate codes.
-        services.AddHttpClient<PocketAPIService>(op =>
+        services.AddHttpClient<IPocketAPIService, PocketAPIService>(op =>
         {
             op.BaseAddress = new Uri("https://getpocket.com");
         });
