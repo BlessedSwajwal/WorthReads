@@ -20,7 +20,6 @@ Content-Type: application/json
     "Password": "Abc123!@#"
 }
 
-##############################
-
-GET {{base}}/article
+###############
+GET {{base}}/Test
 

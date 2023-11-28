@@ -15,13 +15,13 @@ public class UsersController : Controller
 {
     private readonly ISender _mediator;
     private readonly IMapper _mapper;
-    private readonly ReadsService _readsService;
+    private readonly PocketAPIService _pocketAPIService;
 
-    public UsersController(ISender mediator, IMapper mapper, ReadsService readsService)
+    public UsersController(ISender mediator, IMapper mapper, PocketAPIService pocketAPIService)
     {
         _mediator = mediator;
         _mapper = mapper;
-        _readsService = readsService;
+        _pocketAPIService = pocketAPIService;
     }
 
     [AllowAnonymous]
@@ -52,11 +52,12 @@ public class UsersController : Controller
                 ruleValidationErrors => Problem(title: "Error", statusCode: (int)HttpStatusCode.BadRequest, detail: ruleValidationErrors.GetValidationErrors()));
     }
 
-    [HttpGet("article")]
     [AllowAnonymous]
-    public async Task<IActionResult> Article()
+    [HttpGet("Test")]
+    public async Task<IActionResult> Test()
     {
-        var res = await _readsService.GetReads("technology", "popularity");
+        var res = await _pocketAPIService.GetPocketList();
         return Ok(res);
     }
+
 }

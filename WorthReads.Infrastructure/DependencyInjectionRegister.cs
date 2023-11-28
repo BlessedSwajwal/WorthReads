@@ -1,7 +1,6 @@
-﻿using Application.Common.Interfaces.Repositories;
-using Application.Common.Services;
+﻿using Application.Common.Services;
 using Infrastructure.Authentication;
-using Infrastructure.Repositories;
+using Infrastructure.Pocket;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -19,18 +18,23 @@ public static class DependencyInjectionRegister
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<IReadsRepository, ReadsRepository>();
-
-        services.AddHttpClient<ReadsService>((serviceProvider, httpClient) =>
-        {
-            httpClient.BaseAddress = new Uri("https://newsapi.org");
-        });
 
         services.AddSingleton<IJwtGenerator, JwtGenerator>();
 
         AddAuth(services, configuration);
 
         //services.AddHostedService<GetReadsBackgroundTask>();
+
+        //Pocket API Stuffs
+        //TODO - Properly separate codes.
+        services.AddHttpClient<PocketAPIService>(op =>
+        {
+            op.BaseAddress = new Uri("https://getpocket.com");
+        });
+
+        var pocketSettings = new PocketAPISettings();
+        configuration.GetSection(PocketAPISettings.SectionName).Bind(pocketSettings);
+        services.AddSingleton(Options.Create<PocketAPISettings>(pocketSettings));
 
         return services;
     }

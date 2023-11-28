@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "WorthReads.Con
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{CAEF34B1-78BC-4278-9228-4096B4A45E4E}"
 	ProjectSection(SolutionItems) = preProject
-		Reads.http = Reads.http
+		pocket.http = pocket.http
 		Users.http = Users.http
 	EndProjectSection
 EndProject
