@@ -2,9 +2,9 @@
 
 namespace Domain.Reads;
 
-public class Read : Entity<string>
+public class Read : Entity<Uri>
 {
-    private Read(string source, string title, string description, string url, string urlToImage) : base(url)
+    private Read(string source, string title, string description, Uri url, string urlToImage) : base(url)
     {
         Source = source;
         Title = title;
@@ -13,7 +13,7 @@ public class Read : Entity<string>
         UrlToImage = urlToImage;
     }
 
-    public static Read Create(string source, string title, string description, string url, string urlToImage)
+    public static Read Create(string source, string title, string description, Uri url, string urlToImage)
     {
         return new(source, title, description, url, urlToImage);
     }
@@ -24,7 +24,7 @@ public class Read : Entity<string>
 
     public string Title { get; private set; }
     public string Description { get; private set; }
-    public string Url { get; private set; }
+    public Uri Url { get; private set; }
     public string UrlToImage { get; private set; }
 
     private Read() { }

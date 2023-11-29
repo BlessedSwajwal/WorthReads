@@ -1,4 +1,4 @@
-﻿using Application.PdfContainers.Command;
+﻿using Application.PdfContainers.Command.CreatePdf;
 using Contracts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

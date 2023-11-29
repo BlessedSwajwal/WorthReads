@@ -1,4 +1,5 @@
-﻿using Domain.Reads;
+﻿using Application.Common.Services;
+using Domain.Reads;
 using Infrastructure.Pocket;
 using Microsoft.Extensions.Options;
 using System.Net.Http.Json;
@@ -45,7 +46,7 @@ public class PocketAPIService : IPocketAPIService
             string excerpt = itemElement.RootElement.GetProperty("excerpt").GetString() ?? string.Empty;
             string topImageUrl = itemElement.RootElement.GetProperty("top_image_url").GetString() ?? string.Empty;
 
-            reads.Add(Read.Create(string.Empty, resolvedTitle, excerpt, resolvedUrl, topImageUrl));
+            reads.Add(Read.Create(string.Empty, resolvedTitle, excerpt, new Uri(resolvedUrl), topImageUrl));
         }
 
         return reads;

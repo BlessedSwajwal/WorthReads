@@ -16,4 +16,9 @@ public class PdfContainerRepository : IPdfContainerRepository
     {
         throw new NotImplementedException();
     }
+
+    public Task<PdfContainer> GetFromIdAsync(PdfContainerId pdfContainerId)
+    {
+        throw new NotImplementedException();
+    }
 }

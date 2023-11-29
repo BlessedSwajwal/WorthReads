@@ -1,6 +1,8 @@
-﻿using FluentValidation;
+﻿using Application.Common.Authorization.AuthorizationHandler;
+using FluentValidation;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using WorthReads.Application.Common.Behaviors;
 
@@ -19,6 +21,8 @@ public static class DependencyInjectionRegister
 
 
         services.AddSingleton<IMapper, ServiceMapper>();
+
+        services.AddScoped<IAuthorizationHandler, ContactOwnerOrManagerAuthHandler>();
 
         return services;
     }

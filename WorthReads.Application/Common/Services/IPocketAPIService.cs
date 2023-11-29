@@ -1,6 +1,6 @@
 ﻿using Domain.Reads;
 
-namespace Infrastructure.Services;
+namespace Application.Common.Services;
 
 public interface IPocketAPIService
 {

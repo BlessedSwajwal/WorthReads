@@ -10,4 +10,11 @@ public class PdfContainerRepositoryStatic : IPdfContainerRepository
     {
         _pdfContainers.Add(container);
     }
+
+    public async Task<PdfContainer> GetFromIdAsync(PdfContainerId pdfContainerId)
+    {
+        var pc = _pdfContainers.FirstOrDefault(pc => pc.Id == pdfContainerId);
+        if (pc is null) return PdfContainer.ContainerEmpty;
+        return pc;
+    }
 }

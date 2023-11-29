@@ -8,7 +8,7 @@ using WorthReads.Application.Common.Exceptions;
 using WorthReads.Application.Common.Exceptions.ValidationException;
 using WorthReads.Domain.Users.ValueObjects;
 
-namespace Application.PdfContainers.Command;
+namespace Application.PdfContainers.Command.CreatePdfContainer;
 
 public class CreatePdfContainerHandler : IRequestHandler<CreatePdfContainerCommand, OneOf<PdfContainerResult, IServiceError, ValidationErrors>>
 {

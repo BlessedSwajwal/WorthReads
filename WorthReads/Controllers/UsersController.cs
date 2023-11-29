@@ -1,4 +1,4 @@
-﻿using Infrastructure.Services;
+﻿using Application.Common.Services;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;

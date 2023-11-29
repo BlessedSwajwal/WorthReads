@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Application.PdfContainers.Command;
+namespace Application.PdfContainers.Command.CreatePdfContainer;
 
 public class CreatePdfCommandValidator : AbstractValidator<CreatePdfContainerCommand>
 {
