@@ -1,23 +1,25 @@
 ﻿using WorthReads.Domain.Common.Models;
-using WorthReads.Domain.Users;
+using WorthReads.Domain.Users.ValueObjects;
 
 namespace Domain.PdfContainer;
 
 public class PdfContainer : Entity<PdfContainerId>
 {
+    public string Name { get; private set; }
     public bool IsPublic { get; private set; } = false;
-    public User Owner { get; private set; }
+    public UserId OwnerId { get; private set; }
     private List<string> _readsUrl = new();
     public IReadOnlyList<string> ReadsUrl => _readsUrl.AsReadOnly();
 
-    private PdfContainer(PdfContainerId id, User owner) : base(id)
+    private PdfContainer(PdfContainerId id, UserId ownerId, string name) : base(id)
     {
-        Owner = owner;
+        OwnerId = ownerId;
+        Name = name;
     }
 
-    public static PdfContainer Create(User Owner)
+    public static PdfContainer Create(UserId OwnerId, string name)
     {
-        return new(PdfContainerId.CreateUnique(), Owner);
+        return new(PdfContainerId.CreateUnique(), OwnerId, name);
     }
 
     public void AddReadsUrl(string readUrl)
@@ -28,6 +30,11 @@ public class PdfContainer : Entity<PdfContainerId>
     public void RemoveReads(string Url)
     {
         _readsUrl.Remove(Url);
+    }
+
+    public void ChangeName(string name)
+    {
+        Name = name;
     }
 
     public void MakePublic()

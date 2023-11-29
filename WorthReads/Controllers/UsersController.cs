@@ -31,6 +31,7 @@ public class UsersController : Controller
         var createUserCommand = _mapper.Map<CreateUserCommand>(request);
         var createUserCommandResult = await _mediator.Send(createUserCommand);
 
+        var ctx = HttpContext.User;
         var res = createUserCommandResult.Match(
                 userResponse => Ok(userResponse),
                 serviceError => Problem(title: "Error", statusCode: serviceError.StatusCode, detail: serviceError.ErrorMessage),

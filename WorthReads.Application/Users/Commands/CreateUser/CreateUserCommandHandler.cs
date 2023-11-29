@@ -1,11 +1,11 @@
 ﻿using Application.Common.Exceptions;
+using Application.Common.Interfaces.Repositories;
 using Application.Common.Services;
 using MapsterMapper;
 using MediatR;
 using OneOf;
 using WorthReads.Application.Common.Exceptions;
 using WorthReads.Application.Common.Exceptions.ValidationException;
-using WorthReads.Application.Common.Interfaces.Repositories;
 using WorthReads.Application.Users.Common;
 using WorthReads.Domain.Users;
 
@@ -14,13 +14,13 @@ namespace WorthReads.Application.Users.Commands.CreateUser;
 public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, OneOf<UserResponse, IServiceError, ValidationErrors>>
 {
     private readonly IMapper _mapper;
-    private readonly IUserRepository _userRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IJwtGenerator _jwtGenerator;
 
-    public CreateUserCommandHandler(IMapper mapper, IUserRepository userRepository, IJwtGenerator jwtGenerator)
+    public CreateUserCommandHandler(IMapper mapper, IUnitOfWork unitOfWork, IJwtGenerator jwtGenerator)
     {
         _mapper = mapper;
-        _userRepository = userRepository;
+        _unitOfWork = unitOfWork;
         _jwtGenerator = jwtGenerator;
     }
 
@@ -28,7 +28,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, OneOf
     {
         await Task.CompletedTask;
 
-        User existingUser = _userRepository.GetUserByEmail(request.Email)!;
+        User existingUser = await _unitOfWork.UserRepository.GetUserByEmailAsync(request.Email)!;
 
         if (!existingUser.Equals(User.UserEmpty))
         {
@@ -36,7 +36,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, OneOf
         }
 
         var user = User.Create(request.FirstName, request.LastName, request.Email, request.Password);
-        var savedUser = _userRepository.AddUser(user);
+        var savedUser = await _unitOfWork.UserRepository.AddUserAsync(user);
         //Generate Token
         var token = _jwtGenerator.GenerateJwt(savedUser);
 

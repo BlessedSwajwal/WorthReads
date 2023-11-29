@@ -1,5 +1,8 @@
-﻿using Application.Common.Services;
+﻿using Application.Common.Interfaces.Repositories;
+using Application.Common.Services;
 using Infrastructure.Authentication;
+using Infrastructure.Persistence;
+using Infrastructure.Persistence.Repositories;
 using Infrastructure.Pocket;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -9,7 +12,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using WorthReads.Application.Common.Interfaces.Repositories;
-using WorthReads.Infrastructure.Repositories;
 
 namespace WorthReads.Infrastructure;
 
@@ -29,6 +31,7 @@ public static class DependencyInjectionRegister
     private static void AddRepositories(IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWorkStatic>();
     }
 
     private static void AddPocket(IServiceCollection services, IConfiguration configuration)
