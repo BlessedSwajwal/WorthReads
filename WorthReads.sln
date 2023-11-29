@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "WorthReads.API\Domain.csproj", "{4A5AB8FC-D9E2-4AC5-B929-579B0403E818}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "WorthReads.Application\Application.csproj", "{B100C77D-6C8B-4BF3-9260-BD4CDA2975A4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "WorthReads.Contracts\Contracts.csproj", "{1B816C73-0BB3-43B6-B502-F43133BDB1DB}"
@@ -12,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requests", "Requests", "{CAEF34B1-78BC-4278-9228-4096B4A45E4E}"
 	ProjectSection(SolutionItems) = preProject
 		PdfContainer.http = PdfContainer.http
-		pocket.http = pocket.http
 		Users.http = Users.http
 	EndProjectSection
 EndProject
@@ -23,7 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ToDoText.txt = ToDoText.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{2474C959-B4A7-4229-A59A-C10D56D7439E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "WorthReads.API\API.csproj", "{5A192136-8417-4FD6-BC88-D7187D9DF02B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "WorthReads.Domain\Domain.csproj", "{BCFF54E4-B84D-4A3C-B289-6FA111A557AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A5AB8FC-D9E2-4AC5-B929-579B0403E818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A5AB8FC-D9E2-4AC5-B929-579B0403E818}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A5AB8FC-D9E2-4AC5-B929-579B0403E818}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A5AB8FC-D9E2-4AC5-B929-579B0403E818}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B100C77D-6C8B-4BF3-9260-BD4CDA2975A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B100C77D-6C8B-4BF3-9260-BD4CDA2975A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B100C77D-6C8B-4BF3-9260-BD4CDA2975A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,10 +42,14 @@ Global
 		{F24E4E0A-1C5A-42B2-9055-B00AF1334998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F24E4E0A-1C5A-42B2-9055-B00AF1334998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F24E4E0A-1C5A-42B2-9055-B00AF1334998}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2474C959-B4A7-4229-A59A-C10D56D7439E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2474C959-B4A7-4229-A59A-C10D56D7439E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2474C959-B4A7-4229-A59A-C10D56D7439E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2474C959-B4A7-4229-A59A-C10D56D7439E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A192136-8417-4FD6-BC88-D7187D9DF02B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A192136-8417-4FD6-BC88-D7187D9DF02B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A192136-8417-4FD6-BC88-D7187D9DF02B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A192136-8417-4FD6-BC88-D7187D9DF02B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCFF54E4-B84D-4A3C-B289-6FA111A557AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCFF54E4-B84D-4A3C-B289-6FA111A557AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCFF54E4-B84D-4A3C-B289-6FA111A557AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCFF54E4-B84D-4A3C-B289-6FA111A557AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
