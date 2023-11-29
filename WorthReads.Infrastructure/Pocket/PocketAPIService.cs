@@ -17,9 +17,9 @@ public class PocketAPIService : IPocketAPIService
         _pocketAPISettings = pocketAPISettings.Value;
     }
 
-    public async Task<List<Reads>> GetPocketList()
+    public async Task<List<Read>> GetPocketList()
     {
-        var reads = new List<Reads>();
+        var reads = new List<Read>();
         var data = new
         {
             consumer_key = _pocketAPISettings.ConsumerKey,
@@ -45,7 +45,7 @@ public class PocketAPIService : IPocketAPIService
             string excerpt = itemElement.RootElement.GetProperty("excerpt").GetString() ?? string.Empty;
             string topImageUrl = itemElement.RootElement.GetProperty("top_image_url").GetString() ?? string.Empty;
 
-            reads.Add(Reads.Create(string.Empty, resolvedTitle, excerpt, resolvedUrl, topImageUrl));
+            reads.Add(Read.Create(string.Empty, resolvedTitle, excerpt, resolvedUrl, topImageUrl));
         }
 
         return reads;

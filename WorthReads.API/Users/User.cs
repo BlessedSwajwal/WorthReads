@@ -1,4 +1,5 @@
-﻿using WorthReads.Domain.Common.Models;
+﻿using Domain.PdfContainer;
+using WorthReads.Domain.Common.Models;
 using WorthReads.Domain.Users.ValueObjects;
 
 namespace WorthReads.Domain.Users;
@@ -10,6 +11,10 @@ public class User : Entity<UserId>
     public string LastName { get; private set; }
     public string Email { get; private set; }
     public string Password { get; private set; }
+
+    //Both pdf where user is owner and viewer. PdfContainer has Owner field.
+    private List<PdfContainerId> _pdfs = new List<PdfContainerId>();
+    public IReadOnlyList<PdfContainerId> OwningPdfs => _pdfs.AsReadOnly();
     private User(UserId userId,
                  string firstName,
                  string lastName,
@@ -22,6 +27,15 @@ public class User : Entity<UserId>
         Password = password;
     }
 
+    public void AddPdf(PdfContainerId id)
+    {
+        _pdfs.Add(id);
+    }
+
+    public void RemovePdf(PdfContainerId id)
+    {
+        _pdfs.Remove(id);
+    }
     public static User Create(string firstName, string lastName, string email, string password)
     {
         return new(

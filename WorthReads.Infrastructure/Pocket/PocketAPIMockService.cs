@@ -10,12 +10,12 @@ public class PocketAPIMockService : IPocketAPIService
     {
     }
 
-    public async Task<List<Reads>> GetPocketList()
+    public async Task<List<Read>> GetPocketList()
     {
-        return new List<Reads>() {
-            Reads.Create("Kantipur", "Improve your attention span", "Improve your attention span", "https://bigthink.com/the-learning-curve/attention/", "imageurl"),
-            Reads.Create("Online", "Healing power", "Reminiscing", "http://getpocket.com/explore/item/the-healing-power-of-reminiscing", "imageurl"),
-            Reads.Create("Gizmodo", "US", "Alicia Keys", "http://thecut.com/2023/11/alicia-keys-new-york-first-album.html?utm_source=pocket_saves", "imageurl")
+        return new List<Read>() {
+            Read.Create("Kantipur", "Improve your attention span", "Improve your attention span", "https://bigthink.com/the-learning-curve/attention/", "imageurl"),
+            Read.Create("Online", "Healing power", "Reminiscing", "http://getpocket.com/explore/item/the-healing-power-of-reminiscing", "imageurl"),
+            Read.Create("Gizmodo", "US", "Alicia Keys", "http://thecut.com/2023/11/alicia-keys-new-york-first-album.html?utm_source=pocket_saves", "imageurl")
         };
     }
 }

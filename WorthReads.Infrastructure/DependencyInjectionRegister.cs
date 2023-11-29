@@ -17,17 +17,24 @@ public static class DependencyInjectionRegister
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<IUserRepository, UserRepository>();
-
-        services.AddSingleton<IJwtGenerator, JwtGenerator>();
-
+        AddRepositories(services);
         AddAuth(services, configuration);
 
         //services.AddHostedService<GetReadsBackgroundTask>();
 
-        //Pocket API Stuffs
-        //TODO - Properly separate codes.
-        services.AddHttpClient<IPocketAPIService, PocketAPIService>(op =>
+        AddPocket(services, configuration);
+        return services;
+    }
+
+    private static void AddRepositories(IServiceCollection services)
+    {
+        services.AddScoped<IUserRepository, UserRepository>();
+    }
+
+    private static void AddPocket(IServiceCollection services, IConfiguration configuration)
+    {
+
+        services.AddHttpClient<IPocketAPIService, PocketAPIMockService>(op =>
         {
             op.BaseAddress = new Uri("https://getpocket.com");
         });
@@ -35,12 +42,11 @@ public static class DependencyInjectionRegister
         var pocketSettings = new PocketAPISettings();
         configuration.GetSection(PocketAPISettings.SectionName).Bind(pocketSettings);
         services.AddSingleton(Options.Create<PocketAPISettings>(pocketSettings));
-
-        return services;
     }
 
     private static void AddAuth(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddSingleton<IJwtGenerator, JwtGenerator>();
         //Options Configuration
         var jwtSettings = new JwtSettings();
         configuration.GetSection(JwtSettings.SectionName).Bind(jwtSettings);

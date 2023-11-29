@@ -4,5 +4,5 @@ namespace Infrastructure.Services;
 
 public interface IPocketAPIService
 {
-    Task<List<Reads>> GetPocketList();
+    Task<List<Read>> GetPocketList();
 }
