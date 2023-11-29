@@ -1,10 +1,29 @@
 @base=https://localhost:7294/PdfContainer
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjQwNTI4YWQ1LWMyYmUtNDdmMy04NmZmLWNhODYyZGFmZGFkNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IlNhamFsIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkdoaW1pcmUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJzYWphbEBleGFtcGxlLmNvbSIsImV4cCI6MTcwMTI0Njc2OSwiaXNzIjoiV29ydGhSZWFkcyIsImF1ZCI6IldvcnRoUmVhZHNBdWRpZW5jZSJ9.t2fakyWHtm77yvT1WVC1ZDfkJAEy1h7ADbmBewcW5I8
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjU0ZDA3NDEyLTFmNjgtNDI3OS04N2MwLWE4NTBiMzk2ZTZlMyIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IlNhamFsIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkdoaW1pcmUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJzYWphbEBleGFtcGxlLmNvbSIsImV4cCI6MTcwMTI2NDc5NCwiaXNzIjoiV29ydGhSZWFkcyIsImF1ZCI6IldvcnRoUmVhZHNBdWRpZW5jZSJ9.aVq5_pwUKu8crdguKt3ldeUJZopK1hbRbc2UCScngJw
+@ContainerId="e0e0e62a-fa78-4ce8-8195-bdff70a3999f"
 
 POST {{base}}/Create
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "Name": "Tech Container"
+    "Name": "Tech"
 }
+
+########### Add pdf to container
+
+POST {{base}}/AddPdf
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "ContainerId": {{ContainerId}},
+    "Url": "https://bigthink.com/the-learning-curve/attention/"
+}
+
+
+######################## Get Owned Containers
+
+GET {{base}}/OwnedContainers
+Authorization: Bearer {{token}}
+

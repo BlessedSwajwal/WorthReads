@@ -17,4 +17,12 @@ public class PdfContainerRepositoryStatic : IPdfContainerRepository
         if (pc is null) return PdfContainer.ContainerEmpty;
         return pc;
     }
+
+    public async Task<List<PdfContainer>> GetPdfListAsync(IReadOnlyList<PdfContainerId> pdfContainerIds)
+    {
+        var res = _pdfContainers
+                        .Where(e => pdfContainerIds.Contains(e.Id))
+                        .ToList();
+        return res;
+    }
 }

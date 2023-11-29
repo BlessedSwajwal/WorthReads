@@ -23,11 +23,15 @@ public class CreatePdfContainerHandler : IRequestHandler<CreatePdfContainerComma
 
     public async Task<OneOf<PdfContainerResult, IServiceError, ValidationErrors>> Handle(CreatePdfContainerCommand request, CancellationToken cancellationToken)
     {
+        var userId = UserId.Create(request.UserId);
         //Creating a new Container.
-        var container = PdfContainer.Create(UserId.Create(request.UserId), request.Name);
+        var container = PdfContainer.Create(userId, request.Name);
 
         //Save Container
         await _unitOfWork.PdfContainerRepository.AddAsync(container);
+        //TODO - Use events to add containers to Users list
+        var user = await _unitOfWork.UserRepository.GetUserByIdAsync(userId);
+        user.AddPdfContainer(container.Id);
 
         var result = _mapper.Map<PdfContainerResult>(container);
         return result;

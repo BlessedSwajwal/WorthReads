@@ -12,12 +12,12 @@ using WorthReads.Application.Common.Exceptions.ValidationException;
 
 namespace Application.PdfContainers.Command.AddPDF;
 
-public class Handler : IRequestHandler<AddReadCommand, OneOf<Some, IServiceError, ValidationErrors>>
+public class AddReadCommandHandler : IRequestHandler<AddReadCommand, OneOf<Some, IServiceError, ValidationErrors>>
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IAuthorizationService _authorizationService;
 
-    public Handler(IUnitOfWork unitOfWork, IAuthorizationService authorizationService)
+    public AddReadCommandHandler(IUnitOfWork unitOfWork, IAuthorizationService authorizationService)
     {
         _unitOfWork = unitOfWork;
         _authorizationService = authorizationService;
@@ -46,6 +46,10 @@ public class Handler : IRequestHandler<AddReadCommand, OneOf<Some, IServiceError
             throw new Exception("pdf not found");
         }
 
+        if (container.ReadsUrl.Contains(request.url))
+        {
+            return new Some();
+        }
         container.AddReadsUrl(request.url);
         return new Some();
     }

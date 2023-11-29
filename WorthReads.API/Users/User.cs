@@ -27,7 +27,7 @@ public class User : Entity<UserId>
         Password = password;
     }
 
-    public void AddPdf(PdfContainerId id)
+    public void AddPdfContainer(PdfContainerId id)
     {
         _pdfs.Add(id);
     }

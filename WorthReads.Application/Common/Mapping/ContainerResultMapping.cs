@@ -9,6 +9,7 @@ public class ContainerResultMapping : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<PdfContainer, PdfContainerResult>()
+            .Map(dest => dest.id, src => src.Id.Value)
             .Map(dest => dest.OwnerId, src => src.OwnerId.Value)
             .Map(dest => dest.Name, src => src.Name)
             .Map(dest => dest.IsPublic, src => src.IsPublic)

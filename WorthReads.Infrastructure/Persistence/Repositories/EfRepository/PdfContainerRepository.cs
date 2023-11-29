@@ -21,4 +21,12 @@ public class PdfContainerRepository : IPdfContainerRepository
     {
         throw new NotImplementedException();
     }
+
+    public async Task<List<PdfContainer>> GetPdfListAsync(IReadOnlyList<PdfContainerId> pdfContainerIds)
+    {
+        var res = _context.PdfContainers
+                    .Where(e => pdfContainerIds.Contains(e.Id))
+                    .ToList();
+        return res;
+    }
 }
