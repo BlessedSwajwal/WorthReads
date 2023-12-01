@@ -17,4 +17,12 @@ public class ReadsRepositoryStatic : IReadsRepository
         if (read is null) return Read.EmptyReads;
         return read;
     }
+
+    public async Task<List<Read>> GetPdfsFromUrlListAsync(IReadOnlyList<Uri> urlList)
+    {
+        var read = _reads
+                        .Where(r => urlList.Contains(r.Url))
+                        .ToList();
+        return read;
+    }
 }

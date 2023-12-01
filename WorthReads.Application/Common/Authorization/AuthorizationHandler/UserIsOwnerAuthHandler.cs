@@ -26,7 +26,8 @@ public class ContactOwnerOrManagerAuthHandler : AuthorizationHandler<OperationAu
             return Task.CompletedTask;
         }
 
-        if (requirement.Name != Constants.AddPdfOperationName)
+        if (requirement.Name != Constants.AddPdfOperationName
+                && requirement.Name != Constants.GenerateContainerPdf)
         {
             return Task.CompletedTask;
         }

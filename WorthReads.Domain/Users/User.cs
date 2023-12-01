@@ -12,9 +12,9 @@ public class User : Entity<UserId>
     public string Email { get; private set; }
     public string Password { get; private set; }
 
-    //Both pdf where user is owner and viewer. PdfContainer has Owner field.
     private List<PdfContainerId> _pdfs = new List<PdfContainerId>();
     public IReadOnlyList<PdfContainerId> OwningPdfs => _pdfs.AsReadOnly();
+
     private User(UserId userId,
                  string firstName,
                  string lastName,

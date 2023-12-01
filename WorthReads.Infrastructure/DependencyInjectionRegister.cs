@@ -1,6 +1,7 @@
 ﻿using Application.Common.Interfaces.Repositories;
 using Application.Common.Services;
 using Infrastructure.Authentication;
+using Infrastructure.PdfGenerator;
 using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using Infrastructure.Pocket;
@@ -22,6 +23,9 @@ public static class DependencyInjectionRegister
         AddAuth(services, configuration);
 
         //services.AddHostedService<GetReadsBackgroundTask>();
+        services.AddHttpClient<GetArticleContent>();
+        services.AddHttpClient<GetImageData>();
+        services.AddScoped<IGenerateContainerPdf, GenerateContainerPDF>();
 
         AddPocket(services, configuration);
         return services;

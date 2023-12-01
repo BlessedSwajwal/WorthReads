@@ -1,5 +1,6 @@
 ﻿using Application.PdfContainers.Command.AddPDF;
 using Application.PdfContainers.Command.CreatePdfContainer;
+using Application.PdfContainers.Query.GetContainerPDF;
 using Application.PdfContainers.Query.GetOwnedContainers;
 using Contracts;
 using MediatR;
@@ -63,4 +64,19 @@ public class PdfContainerController : ControllerBase
         );
         return res;
     }
+
+    [HttpGet("createPdf/{containerId}")]
+    public async Task<IActionResult> GetPdf([FromRoute] string containerId)
+    {
+        var conId = Guid.Parse(containerId);
+        var query = new GetContainerPDFQuery(User, conId);
+        var result = await _mediator.Send(query);
+        var res = result.Match(
+                file => (IActionResult)File(file.PdfByteArray, "application/pdf", $"{file.ContainerName}.pdf"),
+                serviceError => Problem(title: "Error", statusCode: serviceError.StatusCode, detail: serviceError.ErrorMessage),
+                validationErrors => Problem(title: "Validation Error", statusCode: (int)HttpStatusCode.BadRequest, detail: validationErrors.GetValidationErrors())
+        );
+        return res;
+    }
+
 }
