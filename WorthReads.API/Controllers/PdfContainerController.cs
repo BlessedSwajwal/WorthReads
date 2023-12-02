@@ -66,10 +66,9 @@ public class PdfContainerController : ControllerBase
     }
 
     [HttpGet("createPdf/{containerId}")]
-    public async Task<IActionResult> GetPdf([FromRoute] string containerId)
+    public async Task<IActionResult> GetPdf([FromRoute] Guid containerId)
     {
-        var conId = Guid.Parse(containerId);
-        var query = new GetContainerPDFQuery(User, conId);
+        var query = new GetContainerPDFQuery(User, containerId);
         var result = await _mediator.Send(query);
         var res = result.Match(
                 file => (IActionResult)File(file.PdfByteArray, "application/pdf", $"{file.ContainerName}.pdf"),

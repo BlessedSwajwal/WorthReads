@@ -35,7 +35,10 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, OneOf
             return new UserAlreadyExistsError();
         }
 
-        var user = User.Create(request.FirstName, request.LastName, request.Email, request.Password);
+        //Hash the password
+        var hashedPass = BCrypt.Net.BCrypt.HashPassword(request.Password);
+
+        var user = User.Create(request.FirstName, request.LastName, request.Email, hashedPass);
         var savedUser = await _unitOfWork.UserRepository.AddUserAsync(user);
         //Generate Token
         var token = _jwtGenerator.GenerateJwt(savedUser);

@@ -1,7 +1,7 @@
 @base=https://localhost:7294/PdfContainer
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjBkOTFmMzBlLWVmMTEtNDM1My04YjlkLTVlNmIzYTgxNTE3OCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IlNhamFsIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkdoaW1pcmUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJzYWphbEBleGFtcGxlLmNvbSIsImV4cCI6MTcwMTQ0NDAzMSwiaXNzIjoiV29ydGhSZWFkcyIsImF1ZCI6IldvcnRoUmVhZHNBdWRpZW5jZSJ9.TejH32lOsofE0QcLpYvlF2PK_U38z0IuFAAa_Z76--g
-@ContainerId="c7a19c6f-03de-4e25-a5f8-0da81d678b4e"
-@ContainerIdRoute=c7a19c6f-03de-4e25-a5f8-0da81d678b4e
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjFmYWM5MGYyLTY2ODItNDBmNi05NTJlLTBjMmVlMzM2ODkzNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2dpdmVubmFtZSI6IlNhamFsIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IkdoaW1pcmUiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJzYWphbEBleGFtcGxlLmNvbSIsImV4cCI6MTcwMTQ5OTcyMiwiaXNzIjoiV29ydGhSZWFkcyIsImF1ZCI6IldvcnRoUmVhZHNBdWRpZW5jZSJ9.x8qiYwwjHSatTmlfkIAits73hbvv88wNjp-POYPZyFQ
+@ContainerId=d14b7bba-02d0-4f8a-a0e2-efa0b2e4499e
+
 
 POST {{base}}/Create
 Authorization: Bearer {{token}}
@@ -18,8 +18,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-    "ContainerId": {{ContainerId}},
-    "Url": "https://bigthink.com/the-learning-curve/attention/"
+    "ContainerId": "{{ContainerId}}",
+    "Url": "http://getpocket.com/explore/item/the-healing-power-of-reminiscing"
 }
 
 
@@ -30,5 +30,5 @@ Authorization: Bearer {{token}}
 
 ################################
 
-GET {{base}}/createPdf/{{ContainerIdRoute}}
+GET {{base}}/createPdf/{{ContainerId}}
 Authorization: Bearer {{token}}

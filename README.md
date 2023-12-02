@@ -10,3 +10,7 @@ This project provides a backend API for managing curated article collections. Us
 - Set container privacy: Users can control the privacy of their containers by making them either public or private. Public containers are accessible to all users, while private containers are only accessible to the owner.
 
 - Generate PDF: Users can generate a PDF file containing all the articles in a container. This allows them to download and read the articles offline.
+
+#### External APIs used:
+- Pocker API: To get curated list of articles.
+- Mercury-Parser-API : To parse the content of the URLs.

@@ -27,7 +27,10 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, OneOf<UserResponse,
     {
         await Task.CompletedTask;
         User user = await _unitOfWork.UserRepository.GetUserByEmailAsync(request.Email)!;
-        if (user.Equals(User.UserEmpty) || user.Password != request.Password) return new InvalidCredentialsError();
+        if (user == User.UserEmpty) return new InvalidCredentialsError();
+
+        var passwordVerified = BCrypt.Net.BCrypt.Verify(request.Password, user.Password);
+        if (!passwordVerified) return new InvalidCredentialsError();
 
         //Generate token
         var token = _jwtGenerator.GenerateJwt(user);
