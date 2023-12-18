@@ -6,6 +6,7 @@ using Infrastructure.Persistence;
 using Infrastructure.Persistence.Repositories;
 using Infrastructure.Pocket;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -35,6 +36,8 @@ public static class DependencyInjectionRegister
     {
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWorkStatic>();
+
+        services.AddDbContext<WorthReadsDbContext>(options => options.UseSqlServer());
     }
 
     private static void AddPocket(IServiceCollection services, IConfiguration configuration)

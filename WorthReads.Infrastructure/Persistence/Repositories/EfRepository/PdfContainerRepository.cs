@@ -14,12 +14,15 @@ public class PdfContainerRepository : IPdfContainerRepository
 
     public Task AddAsync(PdfContainer container)
     {
-        throw new NotImplementedException();
+        _context.PdfContainers.Add(container);
+        return Task.CompletedTask;
     }
 
-    public Task<PdfContainer> GetFromIdAsync(PdfContainerId pdfContainerId)
+    public async Task<PdfContainer> GetFromIdAsync(PdfContainerId pdfContainerId)
     {
-        throw new NotImplementedException();
+        var container = _context.PdfContainers.FirstOrDefault(c => c.Id == pdfContainerId);
+        if (container is null) return PdfContainer.ContainerEmpty;
+        return container;
     }
 
     public async Task<List<PdfContainer>> GetPdfListAsync(IReadOnlyList<PdfContainerId> pdfContainerIds)

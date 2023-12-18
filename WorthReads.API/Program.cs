@@ -11,6 +11,16 @@ builder.Services.AddControllers();
 builder.Services.AddApplication()
     .AddInfrastructure(builder.Configuration);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyPolicy", builder =>
+    {
+        builder.WithOrigins("https://localhost:7184") // Add your allowed origins here
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
 //Mapster
 {
     var config = TypeAdapterConfig.GlobalSettings;
@@ -22,6 +32,7 @@ builder.Services.AddApplication()
 
 
 var app = builder.Build();
+app.UseCors("MyPolicy");
 
 app.UseHttpsRedirection();
 

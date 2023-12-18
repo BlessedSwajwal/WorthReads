@@ -18,4 +18,6 @@ public class PdfContainerId : ValueObject
     {
         yield return Value;
     }
+
+    private PdfContainerId() { }
 }

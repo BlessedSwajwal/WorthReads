@@ -12,9 +12,12 @@ public class ReadsRepository : IReadsRepository
         _context = context;
     }
 
-    public Task<Read> GetPdfDetailsAsync(Uri url)
+    public async Task<Read> GetPdfDetailsAsync(Uri url)
     {
-        throw new NotImplementedException();
+
+        var read = _context.Reads.FirstOrDefault(r => r.Id == url);
+        if (read is null) return Read.EmptyReads;
+        return read;
     }
 
     public async Task<List<Read>> GetPdfsFromUrlListAsync(IReadOnlyList<Uri> urlList)
