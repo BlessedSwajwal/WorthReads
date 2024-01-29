@@ -1,0 +1,38 @@
+
+
+POST https://getpocket.com/v3/get
+Content-Type: application/json
+
+{
+  "consumer_key":{{Consumer_Key}},
+  "access_token":{{access_token}},
+  "count":"10",
+  "detailType":"complete",
+  "sort": "newest",
+  "contentType": "article"
+}
+
+
+
+#############Authentication - step 1
+POST https://getpocket.com/v3/oauth/request
+Content-Type: application/json
+
+{
+  "consumer_key":{{Consumer_Key}},
+  "redirect_uri":"https://google.com"
+}
+
+## Step 2 -- redirect the user
+##step 3 -- convert the request token to user specific access token
+
+#################
+POST https://getpocket.com/v3/oauth/authorize
+Content-Type: application/json
+
+{
+  "consumer_key":{{Consumer_Key}},
+  "code":{{code}}
+}
+
+
