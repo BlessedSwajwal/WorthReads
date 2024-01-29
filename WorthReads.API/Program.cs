@@ -11,15 +11,15 @@ builder.Services.AddControllers();
 builder.Services.AddApplication()
     .AddInfrastructure(builder.Configuration);
 
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("MyPolicy", builder =>
-    {
-        builder.WithOrigins("https://localhost:7184") // Add your allowed origins here
-        .AllowAnyMethod()
-        .AllowAnyHeader();
-    });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("MyPolicy", builder =>
+//    {
+//        builder.WithOrigins("https://localhost:7184") // Add your allowed origins here
+//        .AllowAnyMethod()
+//        .AllowAnyHeader();
+//    });
+//});
 
 //Mapster
 {

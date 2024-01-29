@@ -27,7 +27,6 @@ public class GetArticleContent
                 pdfArticles.Add(PdfArticle.Empty);
                 continue;
             }
-            response.Content = SanitizeContent(response.Content!);
             pdfArticles.Add(response);
         }
 

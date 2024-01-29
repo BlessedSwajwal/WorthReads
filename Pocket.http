@@ -1,4 +1,6 @@
-
+@Consumer_Key="secret"
+@code="secret"
+@access_token="secret"
 
 POST https://getpocket.com/v3/get
 Content-Type: application/json

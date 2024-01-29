@@ -21,13 +21,23 @@ public class GenerateContainerPDF : IGenerateContainerPdf
 
     public async Task<byte[]> GenerateContainerPdf(List<Read> container)
     {
+        //Get only the urls.
         var urls = container.Select(c => c.Url);
-        var pdfArticles = await _getArticleContent.GetContent(urls);
-        var articlesWithImage = await _getImageData.Get(pdfArticles);
 
-        QuestPDF.Settings.License = LicenseType.Community;
-        var doc = new PdfBuilder(articlesWithImage);
-        var pdfByteArray = doc.GeneratePdf();
-        return pdfByteArray;
+        var pdfArticles = await _getArticleContent.GetContent(urls);
+        //var articlesWithImage = await _getImageData.Get(pdfArticles);
+
+        //Using questpdf for pdf generation
+
+        //QuestPDF.Settings.License = LicenseType.Community;
+        //var doc = new PdfBuilder(articlesWithImage);
+        //var pdfByteArray = doc.GeneratePdf();
+        //return pdfByteArray;
+
+        //pdfArticles.Content has html string. Generate pdf from it.
+
+        var result = HtmlConverterToPdf.Generate(pdfArticles);
+        return result;
+
     }
 }
