@@ -25,7 +25,6 @@ public static class DependencyInjectionRegister
 
         //services.AddHostedService<GetReadsBackgroundTask>();
         services.AddHttpClient<GetArticleContent>();
-        services.AddHttpClient<GetImageData>();
         services.AddScoped<IGenerateContainerPdf, GenerateContainerPDF>();
 
         AddPocket(services, configuration);

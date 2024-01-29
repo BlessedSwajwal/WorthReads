@@ -1,4 +1,4 @@
-@base=https://localhost:7294/Users
+@base=https://localhost:5000/Users
 
 POST {{base}}/Register
 Content-Type: application/json
